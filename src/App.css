@@ -1,0 +1,49 @@
+body{
+  background-image: url('./images/Maxbg.png');
+  overflow-y: auto !important;
+}
+.App {text-align: center; background-size: cover;}
+.header{
+  height: 300px;
+  text-align: center;
+  background-size: cover; 
+}
+.nav{
+  position: relative;
+}
+.logo{width: 100%;}
+
+
+
+.nones{ font-size:20px; color:#2c2419; font-weight: 700;}
+.cont{ font-size: 20px; color: #2c2419; margin-top: 10px;}
+
+.icons{ width: 10px; height: 20px; margin-top: 5px;}
+/* .names{
+  height: 100px;
+  width: 100%;
+} */
+.none{
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,161 @@
+.home_header{
+    padding-bottom: 20px;
+    margin-top: -80px;
+    z-index: 9999;
+}
+.head{
+    width: 88%;
+     margin: 0 auto;
+}
+.period{
+    width:100%;
+}
+.none{
+    display: none;
+    width: 100%;
+}
+.boking_text{
+    font-size: 14px;
+    font-weight: 500;
+    margin-top:5px;
+}
+.primary{
+    color:#108ee9 ;
+}
+.warning{
+    color:#676767 ;
+}
+.flex{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.icon{ 
+    height: 30px;line-height: 30px; 
+    display: inline-block;
+    border:none;
+    background-color: #c2ad8f;
+}
+
+
+.btns{
+    overflow:hidden;
+}
+
+
+.left_boking{
+    width: 80%;
+}
+.right_boking{
+    width: 20%;
+    text-align: right;
+}
+
+
+
+.btns{ height:50px; width:280px; display: flex;overflow: hidden; margin:0 auto;}
+.left_,.right_,.rightf,.leftf{ 
+    position: relative;
+    height: 100%;
+    width:50%;
+    line-height: 50px;
+    font-size:18px;
+    font-weight: 500;
+    letter-spacing: 5px;
+}
+
+.left_{  border-radius: 30px 0 0 30px;}
+.leftf{  border-radius: 30px 0 0 30px;}
+
+.left_,.right_{ color: #2c2419; background-color:#e8cb98;}
+.right_{ border-radius: 0 30px 30px 0;}
+
+.rightf,.leftf{ color: #d7b782; background-color: #3f4041;}
+.rightf{ border-radius: 0 30px 30px 0;}
+
+.contents2{
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+
+.main{
+    width: 100%;
+    margin: 0 auto;
+}
+.Card_top,.Card_top2{  
+    width:100%;
+    background-color: #c2ad8f;
+    border-radius: 10px;
+    padding:15px 15px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    /* position: relative; */
+}
+.Card_top2{
+    text-align: center;
+    font-size: 22px;
+    color: tomato;
+}
+.showTop{
+    width: 100%; 
+    margin-top: 10px;
+    text-align: left;
+    z-index: 100;
+}
+
+.contents{
+    width: 100%;
+    height:100%;
+    margin-top: 10px;
+}
+.Prim{
+    width: 100%;
+}
+
+
+
+
+
+.oblique,.oblique2{
+    height: 0;
+    width: 50px;
+    border-bottom: none;
+    position: absolute;
+    top: 20px;
+    right: -28px;
+    transform-origin: bottom center;
+    transform: rotate(100deg);
+    z-index: 1000;
+}
+.oblique{
+    border:10px solid #3f4041;
+}
+.oblique2{
+    border:10px solid #e8cb98;
+}
+.tilted{
+    height: 0;
+    width: 50px;
+    border:10px solid #3f4041;
+    border-bottom: none;
+    position: absolute;
+    top: 20px;
+    left: -43px;
+    transform-origin: bottom center;
+    transform: rotate(100deg);
+    z-index: 1000;
+}
+.tilted2{
+    height: 0;
+    width: 50px;
+    border:10px solid #e8cb98;
+    border-bottom: none;
+    background-color:#e8cb98;
+    position: absolute;
+    top: 20px;
+    left: -43px;
+    transform-origin: bottom center;
+    transform: rotate(100deg);
+    z-index: 1000;
+}
