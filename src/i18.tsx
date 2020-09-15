@@ -18,8 +18,8 @@ import {initReactI18next} from 'react-i18next';
 
 let lang = localStorage.getItem("language");
 if (!lang) {
-    lang = 'en_US';
-    localStorage.setItem("language", 'en_US');
+    lang = 'zh_CN';
+    localStorage.setItem("language", 'zh_CN');
 }
 i18n
     .use(LanguageDetector)
