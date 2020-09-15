@@ -5,6 +5,7 @@ import Contract from './Contract/index'
 import {HashRouter as Router,Switch,Route} from 'react-router-dom'
 import service, { UserInfo } from './service/service';
 import {formatDate, fromValue} from "./common/utils";
+import {Toast} from 'antd-mobile'
 import i18 from  './i18';
 export interface homex{
     
@@ -123,7 +124,8 @@ class Home extends React.Component<homex,homey>{
 
                             <div className={this.state.flag2?'showTop':'none'}>
                                     <div className="Card_top" onClick={()=>{
-                                        window.location.href = "http://coral-dex.github.io/dex?"+Date.now()
+                                        Toast.loading("Loading...",10)
+                                        window.location.href = "https://coral-dex.github.io/dex?"+Date.now()
                                     }}>
                                         <div className="nones">CORAL&ensp;DEX</div>
                                         <div className="flex">
@@ -133,6 +135,7 @@ class Home extends React.Component<homex,homey>{
                                         </div>
                                     </div>
                                     <div className="Card_top" onClick={()=>{
+                                        Toast.loading("Loading...",10)
                                         window.location.href = "https://uhexio.gitee.io/sero-sloth/?"+Date.now()
                                     }}>
                                         <div className="nones">SLOTH</div>
