@@ -58,12 +58,6 @@ class App extends React.Component<Appx,Appy>{
 
 
   render(){
-    // var showtai:any = [];
-    // this.state.title.map(item=>{
-    //   showtai.push(
-    //    <div>{'boking合约第'+item+'期'}</div>
-    //   )
-    // })
     return(
       <div className="App">
         <Router>

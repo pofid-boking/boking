@@ -5,9 +5,16 @@ import service, {Phase, UserInfo} from '../service/service';
 import {escapeStr, fromValue, toValue,formatDate} from '../common/utils';
 import Countdown from 'count-down-react'
 import copy from 'copy-text-to-clipboard';
-import i18 from '../i18'
+import i18 from '../i18';
+import Rule from './rule'
+
 const alert = Modal.alert
 const prompt = Modal.prompt;
+
+const pdfStyle: React.CSSProperties = {
+    width: '100%',
+    height: '100%',
+}
 
 interface countdownParmas {
     days: any
@@ -340,16 +347,16 @@ class Contract extends React.Component<Contx, Conty> {
                         <Modal
                             visible={this.state.modal2}
                             transparent
-                            className="wingblank"
+                            // className="wingblank"
                             maskClosable={true}
-                            title={i18.t("RuleIntrodution")+':'}
+                            title={i18.t("RuleIntrodution")}
                             footer={[{
                                 text: i18.t("HaveRead"), onPress: () => {
                                     this.onClose(2)
                                 }
                             }]}>
-                            <div className="winkcontent" style={{height: 500, overflow: 'scroll'}}>
-                                <p>{i18.t("HereRuleContent")}</p>
+                            <div style={{height: document.documentElement.clientHeight * 0.8, overflow: 'scroll'}}>
+                                <Rule/>
                             </div>
                         </Modal>
                     </WingBlank>
