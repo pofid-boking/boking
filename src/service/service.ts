@@ -204,7 +204,7 @@ class Service {
             name: i18.t("contract"),
             contractAddress: config.address,
             github: "https://github.com/",
-            author: "Boking",
+            author: "pofidin",
             url: window.location.origin+window.location.pathname,
             logo: window.location.origin+window.location.pathname +"/logo.png",
 
@@ -224,8 +224,7 @@ class Service {
                         if(data){
                             localStorage.setItem("language",data.language);
                             localStorage.setItem("host",data.rpc)
-                            i18.changeLanguage(data.language).then(() => {
-                            });
+                            i18.changeLanguage(data.language).then(() => {});
                         }
                         resolve()
                     })
