@@ -49,7 +49,7 @@ export interface Conty {
     info?: UserInfo,
 }
 
-const baseTime:number = 30*60*7;
+const baseTime:number = 30*60;
 
 class Contract extends React.Component<Contx, Conty> {
     constructor(props: Contx) {
@@ -86,12 +86,12 @@ class Contract extends React.Component<Contx, Conty> {
                 const data:any = res[0].period;
                 let itemTmp:any = "";
                 const nowTime:number = Math.ceil(Date.now()/1000)
-                const endTime:number = Math.ceil(data[7].startTime*1 + baseTime)
+                const endTime:number = Math.ceil(data[7].startTime*1 + baseTime*7)
                 // a hold round
                 if(nowTime>= data[0].startTime*1 && nowTime <= endTime ){
                     for(let item of data){
                         const startTime:number = item.startTime*1;
-                        const overTime = item.startTime * 1+ baseTime;
+                        const overTime = item.startTime * 1+ baseTime*7;
                         if(nowTime<=overTime && nowTime>=startTime){
                             itemTmp = item
                         }
