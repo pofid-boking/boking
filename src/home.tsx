@@ -125,7 +125,7 @@ class Home extends React.Component<homex,homey>{
                             <div className={this.state.flag2?'showTop':'none'}>
                                     <div className="Card_top" onClick={()=>{
                                         Toast.loading("Loading...",10)
-                                        window.location.href = "https://coral-dex.github.io/dex?"+Date.now()
+                                        window.location.href = "https://coral-dex.gitee.io/dex?"+Date.now()
                                     }}>
                                         <div className="nones">CORAL&ensp;DEX</div>
                                         <div className="flex">
