@@ -336,3 +336,16 @@
 .am-flexbox-item{
     text-align: center !important;
 }
+
+.rule-top{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    text-align: left;
+    padding: 24px;
+}
+
+.rule-top a{
+    color: #f8ddb6;
+    font-size: 16px;
+}

@@ -298,7 +298,6 @@ class Contract extends React.Component<Contx, Conty> {
                         <div className="pokings">({i18.t("PokeRobPOKINGShare")})</div>
                     </div>
                     <div className="line"></div>
-                    <div><a className="rule" onClick={() => this.cutUser('rule')}>{i18.t("LookRule")}</a></div>
                 </div>:<div>
                     <div>
                         <div className="nth-child pokings">
@@ -314,118 +313,122 @@ class Contract extends React.Component<Contx, Conty> {
         }
 
         return (
-            <div className="bodys">
-                <div className="pfid">
+            <>
+                <div className="rule-top"><a className="rule" onClick={() => this.cutUser('rule')}>{i18.t("LookRule")}</a></div>
+                <div className="bodys">
 
-                    <WingBlank>
-                        <WhiteSpace/>
-                        <Modal
-                            visible={this.state.modal1}
-                            className='wingblank'
-                            transparent
-                            maskClosable={false}
-                            title={i18.t("ClickCutUser")}
-                            footer={[{
-                                text: i18.t("CencalUser"), onPress: () => {
-                                    this.onClose(1);
-                                }
-                            }]}>
-                            <List style={{height: 200, overflow: 'scroll'}}>
-                                {
-                                    accounts && accounts.map((value: any) => {
-                                        return <List.Item className="ListUser"  onClick={()=>this.SET_user(value)}>
-                                            {value.Name} ({value.MainPKr})
-                                        </List.Item>
-                                    })
-                                }
-                            </List>
-                        </Modal>
-                    </WingBlank>
+                    <div className="pfid">
 
-                    <WingBlank className="winkblans">
-                        <WhiteSpace/>
-                        <Modal
-                            visible={this.state.modal2}
-                            transparent
-                            // className="wingblank"
-                            maskClosable={true}
-                            title={i18.t("RuleIntrodution")}
-                            footer={[{
-                                text: i18.t("HaveRead"), onPress: () => {
-                                    this.onClose(2)
-                                }
-                            }]}>
-                            <div style={{height: document.documentElement.clientHeight * 0.8, overflow: 'scroll'}}>
-                                <Rule/>
-                            </div>
-                        </Modal>
-                    </WingBlank>
-                    {/*   */}
-
-                    {/* top */}
-                    <div className="Max_top">
-                        <div className="Size ">{i18.t("MyPOFIDIN")}</div>
-                        <div className="line"></div>
-                        <div className="flex pd">
-                            <div>
-                                {account && account.Name} {escapeStr(account && account.MainPKr)}
-                            </div>
-                            <Button className="mr" size="small" type="ghost" onClick={() => this.cutUser('user')}>{i18.t("cut")}</Button>
-                        </div>
-                        <div className="just_size cen">PFIDKEY:&ensp;{this.getBalance("PFIDKEY")}</div>
-                        <div className="line"></div>
-
-                    </div>
-                    {/* align-item:center */}
-                    <div className="Max_center">
-                        <div className="Size">{title}</div>
-                        <div className="line"></div>
-                        {detail}
-
-                    </div>
-                    {/* bottom */}
-
-                    {
-                        info && info.code?<div className="Max_bottom">
-                            <div className="Size">{i18.t("ContractAccount")}</div>
-                            <div className="line"></div>
-                    <p className="just_size">{i18.t("ContractRemain")}:&ensp;{Math.ceil((parseInt(info.createTime) + baseTime * 90 - Date.now()/1000)/baseTime)}{i18.t("Day")}</p>
-                            <p className="just_size">{i18.t("MyRank")}:&ensp;V{info && info?.level}</p>
-                            <div className="line"></div>
-                            <p className="just_size">{i18.t("Invitation")}:</p>
-                            <div>
-                                <List>
-                                    <List.Item extra={<Badge text={info.directUserCount} />}><span className="lot">{i18.t("Generation")}</span></List.Item>
-                                    <List.Item extra={<Badge text={info.indirectUserCount} />}><span className="lot">{i18.t("Secondary")}</span></List.Item>
+                        <WingBlank>
+                            <WhiteSpace/>
+                            <Modal
+                                visible={this.state.modal1}
+                                className='wingblank'
+                                transparent
+                                maskClosable={false}
+                                title={i18.t("ClickCutUser")}
+                                footer={[{
+                                    text: i18.t("CencalUser"), onPress: () => {
+                                        this.onClose(1);
+                                    }
+                                }]}>
+                                <List style={{height: 200, overflow: 'scroll'}}>
+                                    {
+                                        accounts && accounts.map((value: any) => {
+                                            return <List.Item className="ListUser"  onClick={()=>this.SET_user(value)}>
+                                                {value.Name} ({value.MainPKr})
+                                            </List.Item>
+                                        })
+                                    }
                                 </List>
-                            </div>
-                            <div className="line"></div>
-                            <div className="just_size v1firend">{i18.t("MyV1Friend")}:{info && info?.v1Count}</div>
-                            <div className="line"></div>
-                            <div className="tal">
-                                <p><span className="just_size">{i18.t("MyEarnings")}:</span>
-                                    <br/><span
-                                    className=" ">（&nbsp;{i18.t("EverydayUpdate")+newTime()}&nbsp;）</span></p>
-                                <List>
-                                    <List.Item extra={<span className="lot">{info && info?.interest ? fromValue(info?.interest, 18).toFixed(3, 1)+ " PFID" : "0.000" + " PFID"}</span>}>{i18.t("FixedShare")}</List.Item>
-                                    <List.Item extra={<span className="lot">{info && info?.refer ? fromValue(info?.refer, 18).toFixed(3, 1)+ " PFID" : "0.000" + " PFID"}</span>}>{i18.t("PromotionShare")}</List.Item>
-                                    <List.Item extra={<span className="lot">{info && info?.v1 ? fromValue(info?.v1, 18).toFixed(3, 1)+ " PFID" : "0.000" + " PFID"}</span>}>{i18.t("V1Share")}</List.Item>
-                                    <List.Item extra={<span className="lot">{info && info?.v2 ? fromValue(info?.v2, 18).toFixed(3, 1)+ " PFID" : "0.000" + " PFID"}</span>}>{i18.t("V2Share")}</List.Item>
-                                </List>
-                            </div>
-                            <div className="line"></div>
-                            <div className="tac">
-                                <p className="action just_size">{i18.t("CanWithDraw")}:{fromValue(info && info?.canWithDraw, 18).toFixed(3, 1)}PFID</p>
-                                <div className="btn" onClick={() => {
-                                    this.withdraw()
-                                }}>{i18.t("WithDraw")}
+                            </Modal>
+                        </WingBlank>
+
+                        <WingBlank className="winkblans">
+                            <WhiteSpace/>
+                            <Modal
+                                visible={this.state.modal2}
+                                transparent
+                                // className="wingblank"
+                                maskClosable={true}
+                                title={i18.t("RuleIntrodution")}
+                                footer={[{
+                                    text: i18.t("HaveRead"), onPress: () => {
+                                        this.onClose(2)
+                                    }
+                                }]}>
+                                <div style={{height: document.documentElement.clientHeight * 0.8, overflow: 'scroll'}}>
+                                    <Rule/>
                                 </div>
-                            </div>
+                            </Modal>
+                        </WingBlank>
+                        {/*   */}
 
-                        </div>:""
-                    }
+                        {/* top */}
+                        <div className="Max_top">
+                            <div className="Size ">{i18.t("MyPOFIDIN")}</div>
+                            <div className="line"></div>
+                            <div className="flex pd">
+                                <div>
+                                    {account && account.Name} {escapeStr(account && account.MainPKr)}
+                                </div>
+                                <Button className="mr" size="small" type="ghost" onClick={() => this.cutUser('user')}>{i18.t("cut")}</Button>
+                            </div>
+                            <div className="just_size cen">PFIDKEY:&ensp;{this.getBalance("PFIDKEY")}</div>
+                            <div className="line"></div>
+
+                        </div>
+                        {/* align-item:center */}
+                        <div className="Max_center">
+                            <div className="Size">{title}</div>
+                            <div className="line"></div>
+                            {detail}
+
+                        </div>
+                        {/* bottom */}
+
+                        {
+                            info && info.code?<div className="Max_bottom">
+                                <div className="Size">{i18.t("ContractAccount")}</div>
+                                <div className="line"></div>
+                        <p className="just_size">{i18.t("ContractRemain")}:&ensp;{Math.ceil((parseInt(info.createTime) + baseTime * 90 - Date.now()/1000)/baseTime)}{i18.t("Day")}</p>
+                                <p className="just_size">{i18.t("MyRank")}:&ensp;V{info && info?.level}</p>
+                                <div className="line"></div>
+                                <p className="just_size">{i18.t("Invitation")}:</p>
+                                <div>
+                                    <List>
+                                        <List.Item extra={<Badge text={info.directUserCount} />}><span className="lot">{i18.t("Generation")}</span></List.Item>
+                                        <List.Item extra={<Badge text={info.indirectUserCount} />}><span className="lot">{i18.t("Secondary")}</span></List.Item>
+                                    </List>
+                                </div>
+                                <div className="line"></div>
+                                <div className="just_size v1firend">{i18.t("MyV1Friend")}:{info && info?.v1Count}</div>
+                                <div className="line"></div>
+                                <div className="tal">
+                                    <p><span className="just_size">{i18.t("MyEarnings")}:</span>
+                                        <br/><span
+                                        className=" ">（&nbsp;{i18.t("EverydayUpdate")+newTime()}&nbsp;）</span></p>
+                                    <List>
+                                        <List.Item extra={<span className="lot">{info && info?.interest ? fromValue(info?.interest, 18).toFixed(3, 1)+ " PFID" : "0.000" + " PFID"}</span>}>{i18.t("FixedShare")}</List.Item>
+                                        <List.Item extra={<span className="lot">{info && info?.refer ? fromValue(info?.refer, 18).toFixed(3, 1)+ " PFID" : "0.000" + " PFID"}</span>}>{i18.t("PromotionShare")}</List.Item>
+                                        <List.Item extra={<span className="lot">{info && info?.v1 ? fromValue(info?.v1, 18).toFixed(3, 1)+ " PFID" : "0.000" + " PFID"}</span>}>{i18.t("V1Share")}</List.Item>
+                                        <List.Item extra={<span className="lot">{info && info?.v2 ? fromValue(info?.v2, 18).toFixed(3, 1)+ " PFID" : "0.000" + " PFID"}</span>}>{i18.t("V2Share")}</List.Item>
+                                    </List>
+                                </div>
+                                <div className="line"></div>
+                                <div className="tac">
+                                    <p className="action just_size">{i18.t("CanWithDraw")}:{fromValue(info && info?.canWithDraw, 18).toFixed(3, 1)}PFID</p>
+                                    <div className="btn" onClick={() => {
+                                        this.withdraw()
+                                    }}>{i18.t("WithDraw")}
+                                    </div>
+                                </div>
+
+                            </div>:""
+                        }
+                    </div>
                 </div>
-            </div>
+            </>
         )
     }
 }
