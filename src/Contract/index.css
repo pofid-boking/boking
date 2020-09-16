@@ -338,7 +338,7 @@
 }
 
 .rule-top{
-    position: fixed;
+    position: absolute;
     top: 0;
     width: 100%;
     text-align: left;

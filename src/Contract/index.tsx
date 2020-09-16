@@ -49,7 +49,8 @@ export interface Conty {
     info?: UserInfo,
 }
 
-const baseTime:number = 24*60*60;
+// const baseTime:number = 24*60*60;
+const baseTime:number = 30*60;
 
 class Contract extends React.Component<Contx, Conty> {
     constructor(props: Contx) {
@@ -143,27 +144,40 @@ class Contract extends React.Component<Contx, Conty> {
         }
         service.info(account.MainPKr).then(rest => {
             const data: any = service.convertResult(rest[0]);
-            this.setState({
-                info: {
-                    own: data[0],
-                    code: data[1],
-                    referCode: data[2],
-                    lastWithDrawTime: data[3],
-                    createTime: data[4],
-                    directUserCount:data[5],
-                    indirectUserCount:data[6],
-                    interest: data[7],
-                    refer: data[8],
-                    v1: data[9],
-                    v2: data[10],
-                    level: data[11],
-                    v1Count: data[12],
-                    canWithDraw: data[13]
-                }
+            service.userTodayShare(account.MainPKr).then(r2=>{
+                this.setState({
+                    info: {
+                        own: data[0],
+                        code: data[1],
+                        referCode: data[2],
+                        createTime: data[3],
+                        directUserCount:data[4],
+                        indirectUserCount:data[5],
+                        // interest: data[6],
+                        // refer: data[7],
+                        // v1: data[8],
+                        // v2: data[9],
+                        interest: r2[0],
+                        refer: r2[1],
+                        v1: r2[2],
+                        v2: r2[3],
+                        level: data[10],
+                        v1Count: data[11],
+                        canWithDraw: data[12],
+                        hasWithDraw: data[13],
+                        leftDay: data[14],
+                    }
+                })
             })
+
+
         }).catch(e => {
             console.error(e)
         })
+
+
+
+
     }
 
     SET_user = (item: any) => {
@@ -391,7 +405,7 @@ class Contract extends React.Component<Contx, Conty> {
                             info && info.code?<div className="Max_bottom">
                                 <div className="Size">{i18.t("ContractAccount")}</div>
                                 <div className="line"></div>
-                        <p className="just_size">{i18.t("ContractRemain")}:&ensp;{Math.ceil((parseInt(info.createTime) + baseTime * 90 - Date.now()/1000)/baseTime)}{i18.t("Day")}</p>
+                        <p className="just_size">{i18.t("ContractRemain")}:&ensp;{info && info.leftDay}{i18.t("Day")}</p>
                                 <p className="just_size">{i18.t("MyRank")}:&ensp;V{info && info?.level}</p>
                                 <div className="line"></div>
                                 <p className="just_size">{i18.t("Invitation")}:</p>
@@ -409,21 +423,25 @@ class Contract extends React.Component<Contx, Conty> {
                                         <br/><span
                                         className=" ">（&nbsp;{i18.t("EverydayUpdate")+newTime()}&nbsp;）</span></p>
                                     <List>
-                                        <List.Item extra={<span className="lot">{info && info?.interest ? fromValue(info?.interest, 18).toFixed(3, 1)+ " PFID" : "0.000" + " PFID"}</span>}>{i18.t("FixedShare")}</List.Item>
-                                        <List.Item extra={<span className="lot">{info && info?.refer ? fromValue(info?.refer, 18).toFixed(3, 1)+ " PFID" : "0.000" + " PFID"}</span>}>{i18.t("PromotionShare")}</List.Item>
-                                        <List.Item extra={<span className="lot">{info && info?.v1 ? fromValue(info?.v1, 18).toFixed(3, 1)+ " PFID" : "0.000" + " PFID"}</span>}>{i18.t("V1Share")}</List.Item>
-                                        <List.Item extra={<span className="lot">{info && info?.v2 ? fromValue(info?.v2, 18).toFixed(3, 1)+ " PFID" : "0.000" + " PFID"}</span>}>{i18.t("V2Share")}</List.Item>
+                                        <List.Item extra={<span className="lot">{info && info?.interest ? fromValue(info?.interest, 18).toFixed(3, 1)+ " SUSD" : "0.000" + " SUSD"}</span>}>{i18.t("FixedShare")}</List.Item>
+                                        <List.Item extra={<span className="lot">{info && info?.refer ? fromValue(info?.refer, 18).toFixed(3, 1)+ " SUSD" : "0.000" + " SUSD"}</span>}>{i18.t("PromotionShare")}</List.Item>
+                                        <List.Item extra={<span className="lot">{info && info?.v1 ? fromValue(info?.v1, 18).toFixed(3, 1)+ " SUSD" : "0.000" + " SUSD"}</span>}>{i18.t("V1Share")}</List.Item>
+                                        <List.Item extra={<span className="lot">{info && info?.v2 ? fromValue(info?.v2, 18).toFixed(3, 1)+ " SUSD" : "0.000" + " SUSD"}</span>}>{i18.t("V2Share")}</List.Item>
                                     </List>
                                 </div>
                                 <div className="line"></div>
+
+                                <div className="just_size v1firend">{i18.t("WithDraw")}:</div>
+                                <List>
+                                    <List.Item extra={<span className="lot">{info && info?.canWithDraw ? fromValue(info?.canWithDraw, 18).toFixed(3, 1)+ " PFID" : "0.000" + " PFID"}</span>}>{i18.t("CanWithDraw")}</List.Item>
+                                    <List.Item extra={<span className="lot">{info && info?.hasWithDraw ? fromValue(info?.hasWithDraw, 18).toFixed(3, 1)+ " PFID" : "0.000" + " PFID"}</span>}>{i18.t("hasWithdraw")}</List.Item>
+                                </List>
                                 <div className="tac">
-                                    <p className="action just_size">{i18.t("CanWithDraw")}:{fromValue(info && info?.canWithDraw, 18).toFixed(3, 1)}PFID</p>
                                     <div className="btn" onClick={() => {
                                         this.withdraw()
                                     }}>{i18.t("WithDraw")}
                                     </div>
                                 </div>
-
                             </div>:""
                         }
                     </div>

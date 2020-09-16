@@ -10,7 +10,7 @@ export interface UserInfo {
     own: string;
     code:any;
     referCode:any;
-    lastWithDrawTime: any;
+    lastWithDrawTime?: any;
     createTime: any;
     directUserCount:any;
     indirectUserCount:any;
@@ -23,6 +23,8 @@ export interface UserInfo {
     level:any;
     v1Count:any;
     canWithDraw:any;
+    hasWithDraw?:any;
+    leftDay?:any;
 }
 
 export interface Phase {
@@ -69,6 +71,14 @@ class Service {
         console.log("info>>>>>>>",data);
         return data
     }
+
+    async userTodayShare(from:string):Promise<any>{
+        const data:any = await this.call("userTodayShare",[],from);
+        console.log("info>>>>>>>",data);
+        return data
+    }
+
+
     async weekInfos():Promise<any>{
         const weeks:any = await this.call('weekInfos',[])
         console.log('weekInfos>>>>>>>>',weeks)

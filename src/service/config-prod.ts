@@ -1,5 +1,5 @@
 
-const address: string = "4EFcVb1CnvnabRQ2HuhvGWiPxeV4uv87fMjc1cVgfPcp3CF16krQKh47r566FvPjaUbmhMqbMZkNKikYSQ2y3btu";
+const address: string = "5weCCSj4VtqNRDwC3gakQe2aui1DsRBLTgxXP8JwoX4S9beBWZJbgWRne8nrAAmnyE2N8apoDQ3ezp2A2eVPBsqn";
 
 
 const abi: any =[
@@ -36,6 +36,11 @@ const abi: any =[
 						"internalType": "string",
 						"name": "referCode",
 						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "lastWithDrawTime",
+						"type": "uint256"
 					},
 					{
 						"internalType": "uint256",
@@ -86,78 +91,11 @@ const abi: any =[
 						"internalType": "uint256",
 						"name": "canWithDraw",
 						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "hasWithDraw",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "leftDay",
-						"type": "uint256"
 					}
 				],
 				"internalType": "struct Types.UserInfo",
 				"name": "userInfo",
 				"type": "tuple"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "time",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "n",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "d",
-				"type": "uint256"
-			}
-		],
-		"name": "setPrice",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "userTodayShare",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "interest",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "refer",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "v1",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "v2",
-				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",
