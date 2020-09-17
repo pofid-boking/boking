@@ -1,8 +1,35 @@
 
 const address: string = "51rRAdVCnBUwBVnZw3LLv6nZ84i2NLJ5DC2X9vLdqJvgffdQ3YApbAJviQQitaNn1Rs6UvApnB3qkQdC2nXzrm3j";
 
+// const address: string = "4EFcVb1CnvnabRQ2HuhvGWiPxeV4uv87fMjc1cVgfPcp3CF16krQKh47r566FvPjaUbmhMqbMZkNKikYSQ2y3btu";
+
 
 const abi: any =[
+	{
+		"inputs": [],
+		"name": "TodayPrice",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "pofidValue",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "usdValue",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct Types.Rate",
+				"name": "rate",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
 	{
 		"inputs": [
 			{
@@ -14,6 +41,25 @@ const abi: any =[
 		"name": "buy",
 		"outputs": [],
 		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "addr",
+				"type": "address"
+			}
+		],
+		"name": "getCode",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -109,18 +155,37 @@ const abi: any =[
 	{
 		"inputs": [
 			{
+				"internalType": "address",
+				"name": "ownner",
+				"type": "address"
+			}
+		],
+		"name": "register",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "code",
+				"type": "string"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "uint256",
 				"name": "time",
 				"type": "uint256"
 			},
 			{
 				"internalType": "uint256",
-				"name": "n",
+				"name": "pofidValue",
 				"type": "uint256"
 			},
 			{
 				"internalType": "uint256",
-				"name": "d",
+				"name": "usdValue",
 				"type": "uint256"
 			}
 		],
@@ -132,6 +197,19 @@ const abi: any =[
 				"type": "uint256"
 			}
 		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "startTime",
+				"type": "uint256"
+			}
+		],
+		"name": "start",
+		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},

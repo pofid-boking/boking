@@ -49,5 +49,7 @@
     "going": "抢购中",
     "countdown": "倒计时",
     "contract": "合约",
-    "hasWithdraw": "已提现"
+    "hasWithdraw": "已提现",
+
+    "susdRatio": "，根据当天PFID和SUSD的比例价格换算PFID，当前比例为: "
 }

@@ -47,6 +47,7 @@ export interface Conty {
     account: any,
     accounts: Array<any>,
     info?: UserInfo,
+    rate?:any
 }
 
 const baseTime:number = 24*60*60;
@@ -144,33 +145,38 @@ class Contract extends React.Component<Contx, Conty> {
         }
         service.info(account.MainPKr).then(rest => {
             const data: any = service.convertResult(rest[0]);
-            service.userTodayShare(account.MainPKr).then(r2=>{
-                this.setState({
-                    info: {
-                        own: data[0],
-                        code: data[1],
-                        referCode: data[2],
-                        createTime: data[3],
-                        directUserCount:data[4],
-                        indirectUserCount:data[5],
-                        // interest: data[6],
-                        // refer: data[7],
-                        // v1: data[8],
-                        // v2: data[9],
-                        interest: r2[0],
-                        refer: r2[1],
-                        v1: r2[2],
-                        v2: r2[3],
-                        level: data[10],
-                        v1Count: data[11],
-                        canWithDraw: data[12],
-                        hasWithDraw: data[13],
-                        leftDay: data[14],
-                    }
-                })
-            })
-
-
+            // service.userTodayShare(account.MainPKr).then(r2=>{
+            //     service.todayPrice(account.MainPKr).then(r3=>{
+                    this.setState({
+                        info: {
+                            own: data[0],
+                            code: data[1],
+                            referCode: data[2],
+                            createTime: data[3],
+                            directUserCount:data[4],
+                            indirectUserCount:data[5],
+                            interest: data[6],
+                            refer: data[7],
+                            v1: data[8],
+                            v2: data[9],
+                            // interest: r2[0],
+                            // refer: r2[1],
+                            // v1: r2[2],
+                            // v2: r2[3],
+                            level: data[10],
+                            v1Count: data[11],
+                            canWithDraw: data[12],
+                            hasWithDraw: data[13],
+                            leftDay: data[14],
+                        },
+                    //     rate:service.convertResult(r3[0])
+                    })
+                // }).catch(e=>{
+                //     console.error(e)
+                // })
+            // }).catch(e=>{
+            //     console.error(e)
+            // })
         }).catch(e => {
             console.error(e)
         })
@@ -245,7 +251,7 @@ class Contract extends React.Component<Contx, Conty> {
 
     render() {
 
-        const {accounts, account, info, phase} = this.state;
+        const {accounts, account, info, phase,rate} = this.state;
         let nowtime: any = Math.ceil(new Date().getTime() / 1000 );
         let endT: any = null;
         let nowDay = 0;
@@ -280,9 +286,9 @@ class Contract extends React.Component<Contx, Conty> {
                 }
             }
         }
-
-        console.log("phase>>", phase);
-        console.log("isSell=",isSell,"endT=",new Date(endT*1000),"nowDay=",nowDay);
+        //
+        // console.log("phase>>", phase);
+        // console.log("isSell=",isSell,"endT=",new Date(endT*1000),"nowDay=",nowDay);
         let detail:any = "";
         let title:any = "";
         if(info && info.code){
@@ -421,7 +427,7 @@ class Contract extends React.Component<Contx, Conty> {
                                 <div className="tal">
                                     <p><span className="just_size">{i18.t("MyEarnings")}:</span>
                                         <br/><span
-                                        className=" ">（&nbsp;{i18.t("EverydayUpdate")+newTime()}&nbsp;）</span></p>
+                                        className=" ">（&nbsp;{i18.t("EverydayUpdate")+newTime()}&nbsp;{i18.t("susdRatio")}{rate?"1PFID="+fromValue(rate[0],18).dividedBy(fromValue(rate[1],18)).toFixed(3,1)+"SUSD":"0"}</span></p>
                                     <List>
                                         <List.Item extra={<span className="lot">{info && info?.interest ? fromValue(info?.interest, 18).toFixed(3, 1)+ " SUSD" : "0.000" + " SUSD"}</span>}>{i18.t("FixedShare")}</List.Item>
                                         <List.Item extra={<span className="lot">{info && info?.refer ? fromValue(info?.refer, 18).toFixed(3, 1)+ " SUSD" : "0.000" + " SUSD"}</span>}>{i18.t("PromotionShare")}</List.Item>

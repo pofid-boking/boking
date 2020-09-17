@@ -74,7 +74,13 @@ class Service {
 
     async userTodayShare(from:string):Promise<any>{
         const data:any = await this.call("userTodayShare",[],from);
-        console.log("info>>>>>>>",data);
+        console.log("userTodayShare>>>>>>>",data);
+        return data
+    }
+
+    async todayPrice(from:string):Promise<any>{
+        const data:any = await this.call("TodayPrice",[],from);
+        console.log("userTodayShare>>>>>>>",data);
         return data
     }
 
