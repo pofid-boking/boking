@@ -8,13 +8,7 @@ import copy from 'copy-text-to-clipboard';
 import i18 from '../i18';
 import Rule from './rule'
 
-const alert = Modal.alert
 const prompt = Modal.prompt;
-
-const pdfStyle: React.CSSProperties = {
-    width: '100%',
-    height: '100%',
-}
 
 interface countdownParmas {
     days: any
@@ -427,12 +421,12 @@ class Contract extends React.Component<Contx, Conty> {
                                 <div className="tal">
                                     <p><span className="just_size">{i18.t("MyEarnings")}:</span>
                                         <br/><span
-                                        className=" ">（&nbsp;{i18.t("EverydayUpdate")+newTime()}&nbsp;{i18.t("susdRatio")}{rate?"1PFID="+fromValue(rate[0],18).dividedBy(fromValue(rate[1],18)).toFixed(3,1)+"SUSD":"0"}</span></p>
+                                        className=" ">（&nbsp;{i18.t("EverydayUpdate")+newTime()}&nbsp;)</span></p>
                                     <List>
-                                        <List.Item extra={<span className="lot">{info && info?.interest ? fromValue(info?.interest, 18).toFixed(3, 1)+ " SUSD" : "0.000" + " SUSD"}</span>}>{i18.t("FixedShare")}</List.Item>
-                                        <List.Item extra={<span className="lot">{info && info?.refer ? fromValue(info?.refer, 18).toFixed(3, 1)+ " SUSD" : "0.000" + " SUSD"}</span>}>{i18.t("PromotionShare")}</List.Item>
-                                        <List.Item extra={<span className="lot">{info && info?.v1 ? fromValue(info?.v1, 18).toFixed(3, 1)+ " SUSD" : "0.000" + " SUSD"}</span>}>{i18.t("V1Share")}</List.Item>
-                                        <List.Item extra={<span className="lot">{info && info?.v2 ? fromValue(info?.v2, 18).toFixed(3, 1)+ " SUSD" : "0.000" + " SUSD"}</span>}>{i18.t("V2Share")}</List.Item>
+                                        <List.Item extra={<span className="lot">{info && info?.interest ? fromValue(info?.interest, 18).toFixed(3, 1)+ " PFID" : "0.000" + " PFID"}</span>}>{i18.t("FixedShare")}</List.Item>
+                                        <List.Item extra={<span className="lot">{info && info?.refer ? fromValue(info?.refer, 18).toFixed(3, 1)+ " PFID" : "0.000" + " PFID"}</span>}>{i18.t("PromotionShare")}</List.Item>
+                                        <List.Item extra={<span className="lot">{info && info?.v1 ? fromValue(info?.v1, 18).toFixed(3, 1)+ " PFID" : "0.000" + " PFID"}</span>}>{i18.t("V1Share")}</List.Item>
+                                        <List.Item extra={<span className="lot">{info && info?.v2 ? fromValue(info?.v2, 18).toFixed(3, 1)+ " PFID" : "0.000" + " PFID"}</span>}>{i18.t("V2Share")}</List.Item>
                                     </List>
                                 </div>
                                 <div className="line"></div>
