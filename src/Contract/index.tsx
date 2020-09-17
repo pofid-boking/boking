@@ -49,8 +49,8 @@ export interface Conty {
     info?: UserInfo,
 }
 
-// const baseTime:number = 24*60*60;
-const baseTime:number = 30*60;
+const baseTime:number = 24*60*60;
+// const baseTime:number = 30*60;
 
 class Contract extends React.Component<Contx, Conty> {
     constructor(props: Contx) {
