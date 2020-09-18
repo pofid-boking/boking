@@ -251,7 +251,7 @@ class Contract extends React.Component<Contx, Conty> {
         let nowDay = 0;
         let isSell = false;
         // not start
-        const baseDayTime = 30 * 60;
+        const baseDayTime = 24 * 60  * 60;
         if(nowtime < phase.startTime){
             endT = phase.startTime
         }else{
